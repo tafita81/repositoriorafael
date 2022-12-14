@@ -154,3 +154,25 @@ SELECT *
   FROM silver_olist.CLIENTE
   
      WHERE DESCUF = 'SP'
+
+-- COMMAND ----------
+
+-- SELECAO VENDEDORES 
+
+SELECT *
+           
+  FROM silver_olist.VENDEDOR
+  
+
+
+-- COMMAND ----------
+
+-- SELECAO VENDEDORES CARIOCAS E PAULISTAS
+
+SELECT *
+           
+  FROM silver_olist.VENDEDOR
+  
+  WHERE DESCCIDADE ='rio de janeiro'
+  
+  OR DESCUF = 'SP'
