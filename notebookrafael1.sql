@@ -176,3 +176,25 @@ SELECT *
   WHERE DESCCIDADE ='rio de janeiro'
   
   OR DESCUF = 'SP'
+
+-- COMMAND ----------
+
+-- SELECAO PRODUTOS BEBES E PERFUMARIA
+
+SELECT *
+           
+  FROM silver_olist.PRODUTO
+  
+
+
+-- COMMAND ----------
+
+-- SELECAO PRODUTOS BEBES E PERFUMARIA E ALTURA MAIO 5 CM
+
+SELECT *
+           
+  FROM silver_olist.PRODUTO
+  
+WHERE DESCCATEGORIA IN ('perfuramia' , 'bebes')
+
+AND VLALTURACM > 5
