@@ -198,3 +198,7 @@ SELECT *
 WHERE DESCCATEGORIA IN ('perfuramia' , 'bebes')
 
 AND VLALTURACM > 5
+
+-- COMMAND ----------
+
+
