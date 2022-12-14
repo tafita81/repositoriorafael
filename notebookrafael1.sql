@@ -137,4 +137,20 @@ SELECT *,
 
 -- COMMAND ----------
 
+-- SELECAO CLIENTES PAULISTANOS
 
+SELECT *
+           
+  FROM silver_olist.CLIENTE
+  
+     WHERE DESCCIDADE = 'sao paulo'
+
+-- COMMAND ----------
+
+-- SELECAO CLIENTES PAULISTAS
+
+SELECT *
+           
+  FROM silver_olist.CLIENTE
+  
+     WHERE DESCUF = 'SP'
