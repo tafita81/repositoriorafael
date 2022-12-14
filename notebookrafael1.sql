@@ -127,7 +127,14 @@ FROM silver_olist.CLIENTE
 SELECT *,
 
        CASE WHEN descuf IN ('SP', 'MG' ,'RJ', 'ES')  THEN 'SUDESTE'
+             
+      ELSE 'OUTROS'
       
       END AS DESCREGIAO
-        
+      
+       
   FROM silver_olist.CLIENTE
+
+-- COMMAND ----------
+
+
