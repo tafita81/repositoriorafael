@@ -98,3 +98,26 @@ SELECT *,
         END AS DESCNACIONALIDADE
        
 FROM silver_olist.CLIENTE
+
+-- COMMAND ----------
+
+SELECT *,
+
+--- ISSO EH UMA COLUNA NOVA
+       CASE WHEN descuf = 'SP' THEN 'PAULISTA' 
+            WHEN descuf = 'RJ' THEN 'FLUMINENSE' 
+            WHEN descuf = 'PR' THEN 'PARANAENSE' 
+       
+       ELSE 'OUTROS'
+        
+        END AS DESCNACIONALIDADE,
+        
+  -- ISSO EH OUTRA COLUNA NOVA  COM LIKE   
+        
+        CASE WHEN DESCCIDADE LIKE '%sao%' THEN 'tem sao no nome'
+        
+         ELSE 'NAO TEM SAO'
+         
+         END AS DESCCIDADESAO
+       
+FROM silver_olist.CLIENTE
