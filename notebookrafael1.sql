@@ -112,7 +112,7 @@ SELECT *,
         
         END AS DESCNACIONALIDADE,
         
-  -- ISSO EH OUTRA COLUNA NOVA  COM LIKE   
+  -- ISSO EH OUTRA COLUNA NOVA  COM LIKE   e pode colocar o NOT LIKE para dizer o contrario
         
         CASE WHEN DESCCIDADE LIKE '%sao%' THEN 'tem sao no nome'
         
@@ -121,3 +121,13 @@ SELECT *,
          END AS DESCCIDADESAO
        
 FROM silver_olist.CLIENTE
+
+-- COMMAND ----------
+
+SELECT *,
+
+       CASE WHEN descuf IN ('SP', 'MG' ,'RJ', 'ES')  THEN 'SUDESTE'
+      
+      END AS DESCREGIAO
+        
+  FROM silver_olist.CLIENTE
