@@ -625,3 +625,18 @@ SELECT
   order by qtdclienteestado DESC
   
   LIMIT 1
+
+-- COMMAND ----------
+
+--- case when PERCENTUAIS
+
+SELECT *, 
+ vlPreco + vlFrete AS vlTotal, 
+ vlFrete / (vlPreco + vlFrete) AS pctFrete, 
+ CASE WHEN vlFrete / (vlPreco + vlFrete) <= 0.1 THEN '10%' 
+      WHEN vlFrete / (vlPreco + vlFrete) <= 0.25 THEN '10% A 25%'
+      WHEN vlFrete / (vlPreco + vlFrete) <= 0.5 THEN '25% A 50%' 
+      ELSE '+50%' 
+      END AS descFretePct 
+      
+      FROM silver_olist.item_pedido
