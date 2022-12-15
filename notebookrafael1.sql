@@ -370,3 +370,15 @@ COUNT (*)
   
   
 
+
+-- COMMAND ----------
+
+--- APRENDER GROUPBY   DISTINTOS
+
+SELECT descuf,
+
+COUNT (DISTINCT idclienteunico)
+             
+  FROM silver_olist.CLIENTE
+  
+  GROUP BY descuf
