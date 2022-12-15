@@ -259,10 +259,22 @@ SELECT *
 
 -- COMMAND ----------
 
--- contar clientes ESTADO sao paulo
+-- contar clientes CIDADE PRESIDENTE PRUDENTE
 
 SELECT count(*)
            
   FROM silver_olist.CLIENTE
   
   where DESCCIDADE = 'presidente prudente'
+
+-- COMMAND ----------
+
+-- contar clientes CIDADE PRESIDENTE PRUDENTE E CURITIBA
+
+SELECT count(*) AS QTDLINHAS,
+       count (distinct idcliente) as qtdclientes,
+        count (distinct idclienteunico) as qtdclientesunicos
+           
+  FROM silver_olist.CLIENTE
+  
+  where DESCCIDADE IN ('presidente prudente','curitiba')
