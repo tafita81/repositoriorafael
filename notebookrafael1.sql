@@ -608,3 +608,20 @@ SELECT
   
   group by descuf
   order by qtdclienteestado DESC
+
+-- COMMAND ----------
+
+---  order by pela quantidade de clientes  (decrescente)  APARECENDO APENAS A PRIMEIRA LINHA depois que tiver ordenado
+
+
+SELECT 
+ 
+ descuf,
+ count (distinct idclienteunico)  as qtdclienteestado
+      
+  FROM silver_olist.cliente
+  
+  group by descuf
+  order by qtdclienteestado DESC
+  
+  LIMIT 1
