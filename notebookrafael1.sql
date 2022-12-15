@@ -393,4 +393,25 @@ SELECT *
 
 -- COMMAND ----------
 
+-- lista pedidos dez 2017
+SELECT *
 
+      
+  FROM silver_olist.pedido
+  
+  where year(dtpedido) = 2017 and
+        month (dtpedido) = 12
+  
+
+-- COMMAND ----------
+
+-- lista pedidos dez 2017 e entregues com atraso  (macete converter para Date pq pode dar problema de vir errado por causa da hora)
+SELECT *
+
+      
+  FROM silver_olist.pedido
+  
+  where year(dtpedido) = 2017 and
+        month (dtpedido) = 12 and
+        descsituacao = 'delivered' and
+        date(dtentregue) > date(dtestimativaentrega)
