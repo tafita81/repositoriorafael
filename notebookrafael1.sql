@@ -239,4 +239,30 @@ SELECT COUNT(*)  AS NUMEROLINHASNAONULAS,
 
 -- COMMAND ----------
 
+-- contar clientes ESTADO sao paulo
 
+SELECT *
+           
+  FROM silver_olist.CLIENTE
+
+
+
+-- COMMAND ----------
+
+-- contar clientes ESTADO sao paulo
+
+SELECT *
+           
+  FROM silver_olist.CLIENTE
+  
+  where DESCCIDADE = 'presidente prudente'
+
+-- COMMAND ----------
+
+-- contar clientes ESTADO sao paulo
+
+SELECT count(*)
+           
+  FROM silver_olist.CLIENTE
+  
+  where DESCCIDADE = 'presidente prudente'
