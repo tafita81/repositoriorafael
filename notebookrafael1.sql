@@ -415,3 +415,76 @@ SELECT *
         month (dtpedido) = 12 and
         descsituacao = 'delivered' and
         date(dtentregue) > date(dtestimativaentrega)
+
+-- COMMAND ----------
+
+SELECT *
+
+      
+  FROM silver_olist.pedido
+
+-- COMMAND ----------
+
+SELECT *
+
+      
+  FROM silver_olist.pagamento_pedido
+
+-- COMMAND ----------
+
+-- pedidos com mais de 2 parcelas
+
+SELECT *
+
+      
+  FROM silver_olist.pagamento_pedido
+  
+  where nrpacelas >= 2
+
+-- COMMAND ----------
+
+-- pedidos com mais de 2 parcelas  ou mais menores q 20 reais
+
+SELECT *
+      
+  FROM silver_olist.pagamento_pedido
+  
+  where nrpacelas >= 2  and
+  
+  vlpagamento / nrpacelas < 20
+  
+  
+  
+
+-- COMMAND ----------
+
+-- pedidos com mais de 2 parcelas  ou mais menores q 20 reais
+
+SELECT *,
+
+ vlpagamento / nrpacelas AS VALORPARCELA
+      
+  FROM silver_olist.pagamento_pedido
+  
+  where nrpacelas >= 2  and
+  
+  vlpagamento / nrpacelas < 20
+  
+
+-- COMMAND ----------
+
+-- pedidos com mais de 2 parcelas  ou mais menores q 20 reais  - COM ROUND
+
+SELECT *,
+
+ ROUND(vlpagamento / nrpacelas,2) AS VALORPARCELA
+      
+  FROM silver_olist.pagamento_pedido
+  
+  where nrpacelas >= 2  and
+  
+  vlpagamento / nrpacelas < 20
+
+-- COMMAND ----------
+
+
