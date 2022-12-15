@@ -487,4 +487,124 @@ SELECT *,
 
 -- COMMAND ----------
 
+-- SELECIONE OS ITENS DE PEDIDOS (FRETE) E DEFINA EM GRUPOS EM UMA NOVA COLUNA
 
+
+SELECT *
+
+      
+  FROM silver_olist.ITEM_PEDIDO
+  
+
+
+
+
+-- COMMAND ----------
+
+-- SELECIONE OS ITENS DE PEDIDOS (FRETE) E DEFINA EM GRUPOS EM UMA NOVA COLUNA -- PRIMEIRA COISA CALCULAR VALOR TOTAL QUE É PREÇO MAIS FRETE
+
+
+SELECT *,
+
+  VLPRECO + VLFRETE AS VLTOTAL
+      
+  FROM silver_olist.ITEM_PEDIDO
+  
+  
+  
+
+-- COMMAND ----------
+
+-- SELECIONE OS ITENS DE PEDIDOS (FRETE) E DEFINA EM GRUPOS EM UMA NOVA COLUNA -- AGORA MAIS 1 COLUNA DE % FRETE
+
+
+SELECT *,
+
+  VLPRECO + VLFRETE AS VLTOTAL,
+  VLFRETE / (VLPRECO + VLFRETE) AS PERCFRETE
+      
+  FROM silver_olist.ITEM_PEDIDO
+  
+  
+
+-- COMMAND ----------
+
+-- SELECIONE OS ITENS DE PEDIDOS (FRETE) E DEFINA EM GRUPOS EM UMA NOVA COLUNA -- AGORA USAR UM CASE WHEN EM CIMA DO PERCFRETE
+
+
+SELECT *,
+
+--   vlpreco + vlfrete AS vltotal,
+--   vlfrete / (vlpreco + vlfrete) AS percfrete,
+  
+  CASE WHEN  
+  
+      VLFRETE / (VLPRECO + VLFRETE) <= 0.1 THEN '10%'
+      VLFRETE / (VLPRECO + VLFRETE) <= 0.25 THEN '10% A 25%'
+      VLFRETE / (VLPRECO + VLFRETE) <= 0.5 THEN '50%'
+      
+      ELSE '+50%'
+      
+      END AS DESFRETEPACOTE
+      
+  FROM silver_olist.ITEM_PEDIDO
+  
+
+-- COMMAND ----------
+
+---  order by
+
+
+SELECT *
+
+      
+  FROM silver_olist.cliente
+  
+
+
+-- COMMAND ----------
+
+---  order by pela quantidade de clientes
+
+
+SELECT 
+ 
+ descuf,
+ count (distinct idclienteunico)  as qtdclienteestado
+      
+  FROM silver_olist.cliente
+  
+  group by descuf
+  order by descuf
+  
+  
+
+-- COMMAND ----------
+
+---  order by pela quantidade de clientes  (crescente)
+
+
+SELECT 
+ 
+ descuf,
+ count (distinct idclienteunico)  as qtdclienteestado
+      
+  FROM silver_olist.cliente
+  
+  group by descuf
+  order by qtdclienteestado
+
+-- COMMAND ----------
+
+---  order by pela quantidade de clientes  (decrescente)
+
+
+SELECT 
+ 
+ descuf,
+ count (distinct idclienteunico)  as qtdclienteestado
+      
+  FROM silver_olist.cliente
+  
+  group by descuf
+  order by qtdclienteestado DESC
