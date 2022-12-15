@@ -386,3 +386,11 @@ COUNT (DISTINCT idclienteunico)
 -- COMMAND ----------
 
 
+SELECT *
+
+             
+  FROM silver_olist.pedido
+
+-- COMMAND ----------
+
+
