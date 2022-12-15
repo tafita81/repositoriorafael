@@ -336,3 +336,37 @@ SELECT
     MIN (vlfrete)   AS MINFRETE
            
   FROM silver_olist.item_pedido
+
+-- COMMAND ----------
+
+SELECT *
+  
+           
+  FROM silver_olist.CLIENTE
+
+-- COMMAND ----------
+
+--CONTAR CLIENTES SAO PAULO
+
+SELECT COUNT (*)
+  
+           
+  FROM silver_olist.CLIENTE
+  
+  WHERE descuf = 'SP'
+
+-- COMMAND ----------
+
+--- APRENDER GROUPBY
+
+SELECT descuf,
+
+COUNT (*)
+             
+  FROM silver_olist.CLIENTE
+  
+  GROUP BY descuf
+
+  
+  
+
