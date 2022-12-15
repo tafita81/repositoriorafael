@@ -278,3 +278,61 @@ SELECT count(*) AS QTDLINHAS,
   FROM silver_olist.CLIENTE
   
   where DESCCIDADE IN ('presidente prudente','curitiba')
+
+-- COMMAND ----------
+
+SELECT *
+           
+  FROM silver_olist.item_pedido
+  
+
+
+-- COMMAND ----------
+
+SELECT 
+  
+  avg (vlpreco)  AS AVGPRECO,
+  avg (vlfrete)   AS AVGFRETE
+           
+  FROM silver_olist.item_pedido
+
+-- COMMAND ----------
+
+SELECT 
+  
+  avg (vlpreco)  AS AVGPRECO,
+    MAX (vlpreco)  AS MAXPRECO,
+  avg (vlfrete)   AS AVGFRETE,
+    MAX (vlfrete)   AS MAXFRETE
+           
+  FROM silver_olist.item_pedido
+
+-- COMMAND ----------
+
+SELECT 
+  
+  PERCENTILE (VLPRECO,0,5)  AS PRECOMEDIANO,
+    
+    avg (vlpreco)  AS AVGPRECO,
+    MAX (vlpreco)  AS MAXPRECO,
+  avg (vlfrete)   AS AVGFRETE,
+    MAX (vlfrete)   AS MAXFRETE,
+    MIN (vlfrete)   AS MINFRETE
+           
+  FROM silver_olist.item_pedido
+
+-- COMMAND ----------
+
+-- ARREDONDAR - ROUND  - INT E CAST PROCURAR NO GOOGLE
+
+SELECT 
+  
+  INT(PERCENTILE (VLPRECO,0,5))  AS PRECOMEDIANO,
+    
+    ROUND(avg (vlpreco),2)  AS AVGPRECO,
+    INT(MAX (vlpreco))  AS MAXPRECO,
+    INT(avg (vlfrete))   AS AVGFRETE,
+    MAX (vlfrete)   AS MAXFRETE,
+    MIN (vlfrete)   AS MINFRETE
+           
+  FROM silver_olist.item_pedido
