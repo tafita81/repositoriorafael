@@ -632,11 +632,88 @@ SELECT
 
 SELECT *, 
  vlPreco + vlFrete AS vlTotal, 
- vlFrete / (vlPreco + vlFrete) AS pctFrete, 
+ vlFrete / (vlPreco + vlFrete) AS pctFrete,
+ 
  CASE WHEN vlFrete / (vlPreco + vlFrete) <= 0.1 THEN '10%' 
       WHEN vlFrete / (vlPreco + vlFrete) <= 0.25 THEN '10% A 25%'
       WHEN vlFrete / (vlPreco + vlFrete) <= 0.5 THEN '25% A 50%' 
       ELSE '+50%' 
+      
       END AS descFretePct 
       
       FROM silver_olist.item_pedido
+
+-- COMMAND ----------
+
+--- HAVING  DE CONTAGEM DE VENDEDOR
+
+SELECT *
+ 
+     
+  FROM silver_olist.VENDEDOR
+  
+ 
+ 
+
+
+
+-- COMMAND ----------
+
+--- HAVING  DE CONTAGEM DE VENDEDOR AGRUPANDO POR ESTADO
+
+SELECT
+ descuf,
+ count(idvendedor)
+     
+  FROM silver_olist.VENDEDOR
+  
+  group by descuf
+  
+
+-- COMMAND ----------
+
+--- HAVING  DE CONTAGEM DE VENDEDOR AGRUPANDO POR ESTADO -  O HAVING É UM FILTRO DEPOIS DA AGREGACAO
+
+SELECT
+ descuf,
+ count(idvendedor)
+     
+  FROM silver_olist.VENDEDOR
+  
+  group by descuf
+  
+  HAVING  count(idvendedor)  >= 100
+
+-- COMMAND ----------
+
+--- HAVING  DE CONTAGEM DE VENDEDOR AGRUPANDO POR ESTADO -  O HAVING É UM FILTRO DEPOIS DA AGREGACAO COM NOME DA COLUNA, COM MAIS DE 100 VENDEDORES
+
+SELECT
+ descuf,
+ count(idvendedor) AS QTDVENDEDOR
+     
+  FROM silver_olist.VENDEDOR
+  
+  group by descuf
+  
+  HAVING  count(idvendedor)  >= 100
+  
+  ORDER BY QTDVENDEDOR DESC
+
+-- COMMAND ----------
+
+--- HAVING  DE CONTAGEM DE VENDEDOR AGRUPANDO POR ESTADO -  O HAVING É UM FILTRO DEPOIS DA AGREGACAO COM NOME DA COLUNA COM MAIS DE 100 VENDEDORES NA REGIÃO SUDESTE   --  ( O WHERE SEMPRE VEM LOGO APOS O FROM)
+
+SELECT
+ descuf,
+ count(idvendedor) AS QTDVENDEDOR
+     
+  FROM silver_olist.VENDEDOR
+  
+  WHERE descuf IN ('SP','RJ','MG','ES')
+  
+  group by descuf
+  
+  HAVING  count(idvendedor)  >= 100
+  
+  ORDER BY QTDVENDEDOR DESC
