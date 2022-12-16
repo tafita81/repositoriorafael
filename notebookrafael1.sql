@@ -722,4 +722,23 @@ SELECT
 
 -- COMMAND ----------
 
+--- JOIN
+
+SELECT T1.*,
+       T2.descuf
+       
+FROM silver_olist.pedido  AS T1
+
+LEFT JOIN silver_olist.cliente  AS T2
+
+ON T1.idcliente = T2.idcliente
+
+
+
+
+
+
+
+-- COMMAND ----------
+
 
